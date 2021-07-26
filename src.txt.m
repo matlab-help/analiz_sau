@@ -41,7 +41,7 @@ classdef tau < matlab.apps.AppBase
                 clear a b
                 [s t] = step(W)
                 plot(ax,t,s)
-                title(ax,'ĞŸĞµÑ€ĞµÑ…Ğ¾Ğ´Ğ½Ñ‹Ğ¹ Ğ¿Ñ€Ğ¾Ñ†ĞµÑÑ')
+                title(ax,'Ïåğåõîäíûé ïğîöåññ')
                 xlabel(ax,'t')
                 ylabel(ax,'h')
             end
@@ -49,7 +49,7 @@ classdef tau < matlab.apps.AppBase
                 clear a b
                 [a b w] = bode(W);
                 plot(ax,w(:),a(:))
-                title(ax,'ĞĞ§Ğ¥')
+                title(ax,'À×Õ')
                 xlabel(ax,'w')
                 ylabel(ax,'A')
             end
@@ -57,7 +57,7 @@ classdef tau < matlab.apps.AppBase
                 clear a b
                 [a b] = nyquist(W);
                 plot(ax,a(:),b(:))
-                title(ax,'ĞĞ¤Ğ§Ğ¥')
+                title(ax,'ÀÔ×Õ')
                 xlabel(ax,'+1')
                 ylabel(ax,'j')
             end
@@ -65,7 +65,7 @@ classdef tau < matlab.apps.AppBase
                 clear a b
                 [a b] = impulse(W);
                 plot(ax,a(:),b(:))
-                title(ax,'Ğ˜Ğ¼Ğ¿ÑƒĞ»ÑŒÑĞ½Ğ°Ñ Ñ…Ğ°Ñ€Ğ°ĞºÑ‚ĞµÑ€Ğ¸ÑÑ‚Ğ¸ĞºĞ°')
+                title(ax,'Èìïóëüñíàÿ õàğàêòåğèñòèêà')
                 xlabel(ax,'t')
                 ylabel(ax,'h')
             end
@@ -73,7 +73,7 @@ classdef tau < matlab.apps.AppBase
                 clear a b
                 a = pole(W)
                 plot(ax,real(a(:)),imag(a(:)),'r*','LineWidth' ,2)
-                title(ax,'ĞšĞ°Ñ€Ñ‚Ğ° Ğ¿Ğ¾Ğ»ÑÑĞ¾Ğ²')
+                title(ax,'Êàğòà ïîëşñîâ')
                 xlabel(ax,'Re')
                 ylabel(ax,'Im')
             end
@@ -81,7 +81,7 @@ classdef tau < matlab.apps.AppBase
                 clear a b
                 [a b w] = bode(W);
                 plot(ax,w(:),b(:))
-                title(ax,'Ğ¤Ğ§Ğ¥')
+                title(ax,'Ô×Õ')
                 xlabel(ax,'w')
                 ylabel(ax,'fi')
             end
@@ -131,7 +131,7 @@ classdef tau < matlab.apps.AppBase
                 clear a b
                 [a b w] = bode(W);
                 plot(ax,log10(w(:)),20*log10(a(:)))
-                title(ax,'Ğ›ĞĞ§Ğ¥')
+                title(ax,'ËÀ×Õ')
                 xlabel(ax,'lg(w)')
                 ylabel(ax,'20lg(A)')
             end
@@ -139,7 +139,7 @@ classdef tau < matlab.apps.AppBase
                 clear a b
                 [a b w] = bode(W);
                 plot(ax,log10(w(:)),(b(:)))
-                title(ax,'Ğ›Ğ¤Ğ§Ğ¥')
+                title(ax,'ËÔ×Õ')
                 xlabel(ax,'lg(w)')
                 ylabel(ax,'fi(A)')
             end
@@ -156,7 +156,7 @@ classdef tau < matlab.apps.AppBase
                 U = real(pol_B);
                 V = imag(pol_B);
                 plot(ax,U,V)
-                title(ax,'Ğ“Ğ¾Ğ´Ğ¾Ğ³Ñ€Ğ°Ñ„ ĞœĞ¸Ñ…Ğ°Ğ¹Ğ»Ğ¾Ğ²Ğ°')
+                title(ax,'Ãîäîãğàô Ìèõàéëîâà')
                 xlabel(ax,'Im(D)')
                 ylabel(ax,'Re(D)')
             end
@@ -166,16 +166,16 @@ classdef tau < matlab.apps.AppBase
 
         % Button pushed function: Button_9
         function Button_9Pushed(app, event)
-            %% ÑĞ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğµ Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ñ‹
-            PathName = uigetdir('0','ĞšÑƒĞ´Ğ° ÑĞ¾Ñ…Ñ€Ğ°Ğ½Ğ¸Ñ‚ÑŒ Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ñƒ');
-            Filaname = strcat('\Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ğ°_',strrep(string(datetime),':','-'),'.xlsx');
-            %% Ñ‚Ğ¾Ñ‡ĞºĞ¸ Ğ¿ĞµÑ€ĞµÑ…Ğ¾Ğ´Ğ½Ğ¾Ğ³Ğ¾ Ğ¿Ñ€Ğ¾Ñ†ĞµÑÑĞ°
+            %% ñîõğàíåíèå òàáëèöû
+            PathName = uigetdir('0','Êóäà ñîõğàíèòü òàáëèöó');
+            Filaname = strcat('\òàáëèöà_',strrep(string(datetime),':','-'),'.xlsx');
+            %% òî÷êè ïåğåõîäíîãî ïğîöåññà
             B = eval(app.EditField.Value);
             A = eval(app.EditField_2.Value);
             W = tf(B,A);
             [s t] = step(W);
-            xlswrite(strcat(PathName,Filaname),[string('Ğ²Ñ€ĞµĞ¼Ñ'), string('Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ğ¸'),string('Ğ²Ñ€ĞµĞ¼Ñ (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)'), string('Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ğ¸ (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)')],'ĞŸĞµÑ€ĞµÑ…Ğ¾Ğ´Ğ½Ğ°Ñ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ','A1:D1');
-            xlswrite(strcat(PathName,Filaname),[t s],'ĞŸĞµÑ€ĞµÑ…Ğ¾Ğ´Ğ½Ğ°Ñ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ',strcat('A2:B',string(length(s))));
+            xlswrite(strcat(PathName,Filaname),[string('âğåìÿ'), string('çíà÷åíèå ôóíêöèè'),string('âğåìÿ (çàãğóáëåíèå)'), string('çíà÷åíèå ôóíêöèè (çàãğóáëåíèå)')],'Ïåğåõîäíàÿ ôóíêöèÿ','A1:D1');
+            xlswrite(strcat(PathName,Filaname),[t s],'Ïåğåõîäíàÿ ôóíêöèÿ',strcat('A2:B',string(length(s))));
             k = 1;
             t1 = [];
             s1 = [];
@@ -184,15 +184,15 @@ classdef tau < matlab.apps.AppBase
                 s1(k)  = s(j);
                 k = k+1;
             end
-            xlswrite(strcat(PathName,Filaname),[t1' s1'],'ĞŸĞµÑ€ĞµÑ…Ğ¾Ğ´Ğ½Ğ°Ñ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ',strcat('C2:D',string(length(s1))));
+            xlswrite(strcat(PathName,Filaname),[t1' s1'],'Ïåğåõîäíàÿ ôóíêöèÿ',strcat('C2:D',string(length(s1))));
             clear s t s1 t1 j k
-            %% Ñ‚Ğ¾Ñ‡ĞºĞ¸ Ğ¸Ğ¼Ğ¿ÑƒĞ»ÑŒÑĞ½Ğ¾Ğ¹ Ñ…Ğ°Ñ€Ğ°ĞºÑ‚ĞµÑ€Ğ¸ÑÑ‚Ğ¸ĞºĞ¸
+            %% òî÷êè èìïóëüñíîé õàğàêòåğèñòèêè
             B = eval(app.EditField.Value);
             A = eval(app.EditField_2.Value);
             W = tf(B,A);
             [s t] = impulse(W);
-            xlswrite(strcat(PathName,Filaname),[string('Ğ²Ñ€ĞµĞ¼Ñ'), string('Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ğ¸'),string('Ğ²Ñ€ĞµĞ¼Ñ (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)'), string('Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ğ¸ (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)')],'Ğ˜Ğ¼Ğ¿ÑƒĞ»ÑŒÑĞ½Ğ°Ñ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ','A1:D1');
-            xlswrite(strcat(PathName,Filaname),[t s],'Ğ˜Ğ¼Ğ¿ÑƒĞ»ÑŒÑĞ½Ğ°Ñ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ',strcat('A2:B',string(length(s))));
+            xlswrite(strcat(PathName,Filaname),[string('âğåìÿ'), string('çíà÷åíèå ôóíêöèè'),string('âğåìÿ (çàãğóáëåíèå)'), string('çíà÷åíèå ôóíêöèè (çàãğóáëåíèå)')],'Èìïóëüñíàÿ ôóíêöèÿ','A1:D1');
+            xlswrite(strcat(PathName,Filaname),[t s],'Èìïóëüñíàÿ ôóíêöèÿ',strcat('A2:B',string(length(s))));
             k = 1;
             t1 = [];
             s1 = [];
@@ -201,8 +201,8 @@ classdef tau < matlab.apps.AppBase
                 s1(k)  = s(j);
                 k = k+1;
             end
-            xlswrite(strcat(PathName,Filaname),[t1' s1'],'Ğ˜Ğ¼Ğ¿ÑƒĞ»ÑŒÑĞ½Ğ°Ñ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ',strcat('C2:D',string(length(s1))));
-            %% Ñ‚Ğ¾Ñ‡ĞºĞ¸ Ğ³Ğ¾Ğ´Ğ¾Ğ³Ñ€Ğ°Ñ„Ğ° Ğ½Ğ°Ğ¹ĞºĞ²Ğ¸ÑÑ‚Ğ°
+            xlswrite(strcat(PathName,Filaname),[t1' s1'],'Èìïóëüñíàÿ ôóíêöèÿ',strcat('C2:D',string(length(s1))));
+            %% òî÷êè ãîäîãğàôà íàéêâèñòà
             A = eval(app.EditField.Value)
             B = eval(app.EditField_2.Value)
             w0 = eval(app.EditField_3.Value);
@@ -218,8 +218,8 @@ classdef tau < matlab.apps.AppBase
             end
             U = real(pol_A./pol_B);
             V = imag(pol_A./pol_B);
-            xlswrite(strcat(PathName,Filaname),[string('Ñ‡Ğ°ÑÑ‚Ğ¾Ñ‚Ğ°'), string('Re(W(j*w))'), string('Im(W(j*w))'), string('Ñ‡Ğ°ÑÑ‚Ğ¾Ñ‚Ğ° (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)'), string('Re(W(j*w)) (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)'), string('Im(W(j*w)) (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)')],'Ğ“Ğ¾Ğ´Ğ¾Ğ³Ñ€Ğ°Ñ„ ĞĞ°Ğ¹ĞºĞ²Ğ¸ÑÑ‚Ğ°','A1:F1');
-            xlswrite(strcat(PathName,Filaname),[imag(w)' U' V'],'Ğ“Ğ¾Ğ´Ğ¾Ğ³Ñ€Ğ°Ñ„ ĞĞ°Ğ¹ĞºĞ²Ğ¸ÑÑ‚Ğ°',strcat('A2:C',string(length(w))));
+            xlswrite(strcat(PathName,Filaname),[string('÷àñòîòà'), string('Re(W(j*w))'), string('Im(W(j*w))'), string('÷àñòîòà (çàãğóáëåíèå)'), string('Re(W(j*w)) (çàãğóáëåíèå)'), string('Im(W(j*w)) (çàãğóáëåíèå)')],'Ãîäîãğàô Íàéêâèñòà','A1:F1');
+            xlswrite(strcat(PathName,Filaname),[imag(w)' U' V'],'Ãîäîãğàô Íàéêâèñòà',strcat('A2:C',string(length(w))));
             k = 1;
             w1 = [];
             V1 = [];
@@ -230,9 +230,9 @@ classdef tau < matlab.apps.AppBase
                 U1(k)  = U(j);
                 k = k+1;
             end
-            xlswrite(strcat(PathName,Filaname),[imag(w1)' U1' V1'],'Ğ“Ğ¾Ğ´Ğ¾Ğ³Ñ€Ğ°Ñ„ ĞĞ°Ğ¹ĞºĞ²Ğ¸ÑÑ‚Ğ°',strcat('D2:F',string(length(w1))));
+            xlswrite(strcat(PathName,Filaname),[imag(w1)' U1' V1'],'Ãîäîãğàô Íàéêâèñòà',strcat('D2:F',string(length(w1))));
             clear w V U w1 V1 U1
-            %% Ñ‚Ğ¾Ñ‡ĞºĞ¸ ĞĞ§Ğ¥ Ğ¸ Ğ¤Ğ§Ğ¥
+            %% òî÷êè À×Õ è Ô×Õ
             A = eval(app.EditField.Value)
             B = eval(app.EditField_2.Value)
             w0 = eval(app.EditField_3.Value)
@@ -250,8 +250,8 @@ classdef tau < matlab.apps.AppBase
             V = imag(pol_A./pol_B);
             AMP = sqrt(U.^2+V.^2);
             fi  = atan(V./U)
-            xlswrite(strcat(PathName,Filaname),[string('Ñ‡Ğ°ÑÑ‚Ğ¾Ñ‚Ğ°'), string('Ğ°Ğ¼Ğ¿Ğ»Ğ¸Ñ‚ÑƒĞ´Ğ°'), string('Ñ„Ğ°Ğ·Ğ°'), string('Ñ‡Ğ°ÑÑ‚Ğ¾Ñ‚Ğ° (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)'), string('Ğ°Ğ¼Ğ¿Ğ»Ğ¸Ñ‚ÑƒĞ´Ğ° (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)'), string('Ñ„Ğ°Ğ·Ğ° (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)')],'ĞĞ§Ğ¥ Ğ¸ Ğ¤Ğ§Ğ¥','A1:F1');
-            xlswrite(strcat(PathName,Filaname),[imag(w)' AMP' fi'],'ĞĞ§Ğ¥ Ğ¸ Ğ¤Ğ§Ğ¥',strcat('A2:C',string(length(w))));
+            xlswrite(strcat(PathName,Filaname),[string('÷àñòîòà'), string('àìïëèòóäà'), string('ôàçà'), string('÷àñòîòà (çàãğóáëåíèå)'), string('àìïëèòóäà (çàãğóáëåíèå)'), string('ôàçà (çàãğóáëåíèå)')],'À×Õ è Ô×Õ','A1:F1');
+            xlswrite(strcat(PathName,Filaname),[imag(w)' AMP' fi'],'À×Õ è Ô×Õ',strcat('A2:C',string(length(w))));
             k = 1;
             w1 = [];
             AMP1 = [];
@@ -262,9 +262,9 @@ classdef tau < matlab.apps.AppBase
                 fi1(k)  = fi(j);
                 k = k+1;
             end
-            xlswrite(strcat(PathName,Filaname),[imag(w1)' AMP1' fi1'],'ĞĞ§Ğ¥ Ğ¸ Ğ¤Ğ§Ğ¥',strcat('D2:F',string(length(w1))));
+            xlswrite(strcat(PathName,Filaname),[imag(w1)' AMP1' fi1'],'À×Õ è Ô×Õ',strcat('D2:F',string(length(w1))));
             clear w V U w1 V1 U1
-            %% Ñ‚Ğ¾Ñ‡ĞºĞ¸ Ğ›ĞĞ§Ğ¥ Ğ¸ Ğ›Ğ¤Ğ§Ğ¥
+            %% òî÷êè ËÀ×Õ è ËÔ×Õ
             A = eval(app.EditField.Value)
             B = eval(app.EditField_2.Value)
             w0 = eval(app.EditField_3.Value)
@@ -282,8 +282,8 @@ classdef tau < matlab.apps.AppBase
             V = imag(pol_A./pol_B);
             AMP = 20*log10(sqrt(U.^2+V.^2));
             fi  = atan(V./U)
-            xlswrite(strcat(PathName,Filaname),[string('Ğ»Ğ¾Ğ³Ğ°Ñ€Ğ¸Ñ„Ğ¼ Ñ‡Ğ°ÑÑ‚Ğ¾Ñ‚Ñ‹'), string('Ğ»Ğ¾Ğ³Ğ°Ñ€Ğ¸Ñ„Ğ¼ Ğ°Ğ¼Ğ¿Ğ»Ğ¸Ñ‚ÑƒĞ´Ñ‹'), string('Ñ„Ğ°Ğ·Ğ°'), string('Ğ»Ğ¾Ğ³Ğ°Ñ€Ğ¸Ñ„Ğ¼ Ñ‡Ğ°ÑÑ‚Ğ¾Ñ‚Ñ‹ (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)'), string('Ğ»Ğ¾Ğ³Ğ°Ñ€Ğ¸Ñ„Ğ¼ Ğ°Ğ¼Ğ¿Ğ»Ğ¸Ñ‚ÑƒĞ´Ñ‹ (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)'), string('Ñ„Ğ°Ğ·Ğ° (Ğ·Ğ°Ğ³Ñ€ÑƒĞ±Ğ»ĞµĞ½Ğ¸Ğµ)')],'ĞĞ§Ğ¥ Ğ¸ Ğ¤Ğ§Ğ¥','A1:F1');
-            xlswrite(strcat(PathName,Filaname),[log10(imag(w))' AMP' fi'],'Ğ›ĞĞ§Ğ¥ Ğ¸ Ğ›Ğ¤Ğ§Ğ¥',strcat('A2:C',string(length(w))));
+            xlswrite(strcat(PathName,Filaname),[string('ëîãàğèôì ÷àñòîòû'), string('ëîãàğèôì àìïëèòóäû'), string('ôàçà'), string('ëîãàğèôì ÷àñòîòû (çàãğóáëåíèå)'), string('ëîãàğèôì àìïëèòóäû (çàãğóáëåíèå)'), string('ôàçà (çàãğóáëåíèå)')],'À×Õ è Ô×Õ','A1:F1');
+            xlswrite(strcat(PathName,Filaname),[log10(imag(w))' AMP' fi'],'ËÀ×Õ è ËÔ×Õ',strcat('A2:C',string(length(w))));
             k = 1;
             w1 = [];
             AMP1 = [];
@@ -294,8 +294,37 @@ classdef tau < matlab.apps.AppBase
                 fi1(k)  = fi(j);
                 k = k+1;
             end
-            xlswrite(strcat(PathName,Filaname),[log10(imag(w1))' AMP1' fi1'],'Ğ›ĞĞ§Ğ¥ Ğ¸ Ğ›Ğ¤Ğ§Ğ¥',strcat('D2:F',string(length(w1))));
+            xlswrite(strcat(PathName,Filaname),[log10(imag(w1))' AMP1' fi1'],'ËÀ×Õ è ËÔ×Õ',strcat('D2:F',string(length(w1))));
             clear w V U w1 V1 U1
+            
+            
+            %% òî÷êè ãîäîãğàôà Ìèõàéëîâà
+            B = eval(app.EditField_2.Value)
+            w0 = eval(app.EditField_3.Value)
+            p = tf([1 0],1);
+            w = (0:0.01:w0)*i;
+            pol_B = 0;
+            for j = 1:length(B)
+                pol_B = pol_B + B(j)*w.^(length(B)-j);
+            end
+            U = real(pol_B);
+            V = imag(pol_B);
+            xlswrite(strcat(PathName,Filaname),[string('÷àñòîòà'), string('Re(D)'), string('Im(D)'), string('÷àñòîòà (çàãğóáëåíèå)'), string('Re(D) (çàãğóáëåíèå)'), string('Im(D) (çàãğóáëåíèå)')],'Ãîäîãğàô Ìèõàéëîâà','A1:F1');
+            xlswrite(strcat(PathName,Filaname),[imag(w)' U' V'],'Ãîäîãğàô Ìèõàéëîâà',strcat('A2:C',string(length(w))));
+            k = 1;
+            w1 = [];
+            U1 = [];
+            V1 = [];
+            for j = 1:5:length(w)
+                w1(k)  = w(j);
+                U1(k)  = U(j);
+                V1(k)  = V(j);
+                k = k+1;
+            end
+            xlswrite(strcat(PathName,Filaname),[imag(w1)' U1' V1'],'Ãîäîãğàô Ìèõàéëîâà',strcat('D2:F',string(length(w1))));
+            clear w V U w1 V1 U1
+           
+            
             
         end
     end
@@ -325,48 +354,48 @@ classdef tau < matlab.apps.AppBase
             app.Button.FontSize = 14;
             app.Button.FontWeight = 'bold';
             app.Button.Position = [29 217 230 24];
-            app.Button.Text = 'ĞŸĞ¾ÑÑ‚Ñ€Ğ¾Ğ¸Ñ‚ÑŒ';
+            app.Button.Text = 'Ïîñòğîèòü';
 
             % Create ButtonGroup
             app.ButtonGroup = uibuttongroup(app.SAU_ANALIZ20UIFigure);
-            app.ButtonGroup.Title = 'Ğ¥Ğ°Ñ€Ğ°ĞºÑ‚ĞµÑ€Ğ¸ÑÑ‚Ğ¸ĞºĞ°';
+            app.ButtonGroup.Title = 'Õàğàêòåğèñòèêà';
             app.ButtonGroup.FontWeight = 'bold';
             app.ButtonGroup.Position = [29 309 230 273];
 
             % Create Button_2
             app.Button_2 = uiradiobutton(app.ButtonGroup);
-            app.Button_2.Text = 'ĞĞ§Ğ¥';
+            app.Button_2.Text = 'À×Õ';
             app.Button_2.FontWeight = 'bold';
             app.Button_2.Position = [11 227 58 22];
             app.Button_2.Value = true;
 
             % Create Button_3
             app.Button_3 = uiradiobutton(app.ButtonGroup);
-            app.Button_3.Text = 'Ğ“Ğ¾Ğ´Ğ¾Ğ³Ñ€Ğ°Ñ„ ĞĞ°Ğ¹ĞºĞ²Ğ¸ÑÑ‚Ğ°';
+            app.Button_3.Text = 'Ãîäîãğàô Íàéêâèñòà';
             app.Button_3.FontWeight = 'bold';
             app.Button_3.Position = [11 167 146 22];
 
             % Create Button_4
             app.Button_4 = uiradiobutton(app.ButtonGroup);
-            app.Button_4.Text = 'ĞŸĞµÑ€ĞµÑ…Ğ¾Ğ´Ğ½Ñ‹Ğ¹ Ğ¿Ñ€Ğ¾Ñ†ĞµÑÑ';
+            app.Button_4.Text = 'Ïåğåõîäíûé ïğîöåññ';
             app.Button_4.FontWeight = 'bold';
             app.Button_4.Position = [11 110 150 22];
 
             % Create Button_5
             app.Button_5 = uiradiobutton(app.ButtonGroup);
-            app.Button_5.Text = 'Ğ˜Ğ¼Ğ¿ÑƒĞ»ÑŒÑĞ½ÑƒÑ Ñ…Ğ°Ñ€Ğ°ĞºÑ‚ĞµÑ€Ğ¸ÑÑ‚Ğ¸ĞºÑƒ';
+            app.Button_5.Text = 'Èìïóëüñíóş õàğàêòåğèñòèêó';
             app.Button_5.FontWeight = 'bold';
             app.Button_5.Position = [11 84 197 22];
 
             % Create Button_6
             app.Button_6 = uiradiobutton(app.ButtonGroup);
-            app.Button_6.Text = 'ĞšĞ°Ñ€Ñ‚Ğ° Ğ¿Ğ¾Ğ»ÑÑĞ¾Ğ²';
+            app.Button_6.Text = 'Êàğòà ïîëşñîâ';
             app.Button_6.FontWeight = 'bold';
             app.Button_6.Position = [11 59 113 22];
 
             % Create Button_7
             app.Button_7 = uiradiobutton(app.ButtonGroup);
-            app.Button_7.Text = 'Ğ¤Ğ§Ğ¥';
+            app.Button_7.Text = 'Ô×Õ';
             app.Button_7.FontWeight = 'bold';
             app.Button_7.Position = [75 227 49 22];
 
@@ -384,19 +413,19 @@ classdef tau < matlab.apps.AppBase
 
             % Create Button_10
             app.Button_10 = uiradiobutton(app.ButtonGroup);
-            app.Button_10.Text = 'Ğ›ĞĞ§Ğ¥';
+            app.Button_10.Text = 'ËÀ×Õ';
             app.Button_10.FontWeight = 'bold';
             app.Button_10.Position = [11 196 58 22];
 
             % Create Button_11
             app.Button_11 = uiradiobutton(app.ButtonGroup);
-            app.Button_11.Text = 'Ğ›Ğ¤Ğ§Ğ¥';
+            app.Button_11.Text = 'ËÔ×Õ';
             app.Button_11.FontWeight = 'bold';
             app.Button_11.Position = [75 196 57 22];
 
             % Create Button_12
             app.Button_12 = uiradiobutton(app.ButtonGroup);
-            app.Button_12.Text = 'Ğ“Ğ¾Ğ´Ğ¾Ğ³Ñ€Ğ°Ñ„ ĞœĞ¸Ñ…Ğ°Ğ¹Ğ»Ğ¾Ğ²Ğ°';
+            app.Button_12.Text = 'Ãîäîãğàô Ìèõàéëîâà';
             app.Button_12.FontWeight = 'bold';
             app.Button_12.Position = [11 137 150 22];
 
@@ -406,7 +435,7 @@ classdef tau < matlab.apps.AppBase
             app.Label.FontSize = 16;
             app.Label.FontWeight = 'bold';
             app.Label.Position = [314 547 92 22];
-            app.Label.Text = 'Ğ§Ğ¸ÑĞ»Ğ¸Ñ‚ĞµĞ»ÑŒ';
+            app.Label.Text = '×èñëèòåëü';
 
             % Create EditField
             app.EditField = uieditfield(app.SAU_ANALIZ20UIFigure, 'text');
@@ -421,7 +450,7 @@ classdef tau < matlab.apps.AppBase
             app.Label_2.FontSize = 16;
             app.Label_2.FontWeight = 'bold';
             app.Label_2.Position = [313 512 110 22];
-            app.Label_2.Text = 'Ğ—Ğ½Ğ°Ğ¼ĞµĞ½Ğ°Ñ‚ĞµĞ»ÑŒ';
+            app.Label_2.Text = 'Çíàìåíàòåëü';
 
             % Create EditField_2
             app.EditField_2 = uieditfield(app.SAU_ANALIZ20UIFigure, 'text');
@@ -436,7 +465,7 @@ classdef tau < matlab.apps.AppBase
             app.Button_9.FontSize = 14;
             app.Button_9.FontWeight = 'bold';
             app.Button_9.Position = [29 178 230 24];
-            app.Button_9.Text = 'Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½Ğ¸Ñ‚ÑŒ Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ñƒ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğ¹';
+            app.Button_9.Text = 'Ñîõğàíèòü òàáëèöó çíà÷åíèé';
 
             % Create Label_3
             app.Label_3 = uilabel(app.SAU_ANALIZ20UIFigure);
@@ -444,7 +473,7 @@ classdef tau < matlab.apps.AppBase
             app.Label_3.FontSize = 16;
             app.Label_3.FontWeight = 'bold';
             app.Label_3.Position = [30 279 167 22];
-            app.Label_3.Text = 'Ñ‡Ğ°ÑÑ‚Ğ¾Ñ‚Ğ° Ğ´Ğ»Ñ Ñ€Ğ°ÑÑ‡ĞµÑ‚Ğ°';
+            app.Label_3.Text = '÷àñòîòà äëÿ ğàñ÷åòà';
 
             % Create EditField_3
             app.EditField_3 = uieditfield(app.SAU_ANALIZ20UIFigure, 'text');
